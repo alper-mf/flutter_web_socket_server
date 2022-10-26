@@ -1,9 +1,12 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:socket_server/terminal_service.dart';
+
 Future<void> main() async {
   final socket = await Socket.connect('0.0.0.0', 3000);
-  print('Client: Connected to ${socket.remoteAddress.address}:${socket.remotePort}');
+  printGreen('Client: Connected to ${socket.remoteAddress.address}:${socket.remotePort}');
+  String? userName;
 
   socket.listen((Uint8List data) {
     final response = String.fromCharCodes(data);
@@ -16,7 +19,6 @@ Future<void> main() async {
     socket.destroy();
   });
 
-  String? userName;
   do {
     print('Please enter your user name');
     userName = stdin.readLineSync();
