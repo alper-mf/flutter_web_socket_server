@@ -1,0 +1,8 @@
+import 'package:socket_server/socket_server.dart';
+import 'package:test/test.dart';
+
+void main() {
+  test('calculate', () {
+    expect(calculate(), 42);
+  });
+}
